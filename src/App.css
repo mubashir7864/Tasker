@@ -1,38 +1,512 @@
-.App {
-  text-align: center;
+body{
+    margin: 0;
+    padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.taskManager{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.sidebar{
+    background-color: #DEE5F8;
+    width: 350px;
+    min-width: 160px;
+    height: 100%;  
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.main{
+    background-image: url("../src/Assets/Images/acve.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
-.App-link {
-  color: #61dafb;
+/* User */
+.userContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 2px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* add New Task */
+
+.AddNewTask{
+    border-bottom: 1px solid #ebebeb;
+}
+.task-btn{
+    padding: 1rem;
+    height: 60px;
+}
+.addNew-btn{
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 7px;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: rgb(160, 84, 231) ;
+    color: white;
+    cursor: pointer;
+}
+.addNew-btn:hover{
+    background-color: blueviolet;
+    
+}
+
+/* todomodel */
+
+.TodoModal{
+    position:fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background:rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+.todoModalContainer{
+    position: absolute;
+    top: 25%;
+    left: 40%;
+    transform: translate(-50% , -25%);
+    background-color: white;
+    border-radius: 6px;
+    
+}
+
+.todoModalContainer form{
+    padding: 1rem;
+    width: 500px;
+    background-color: white;
+    border-radius: 5px;
+
+}
+
+.textContainer input{
+    padding: 1rem;
+    width: 80%;
+    margin-bottom: 10px;
+    border: none;
+    font-size: 1.2rem;
+
+}
+
+.textContainer input:focus{
+    outline: none;
+    border-bottom: 1px solid black;
+
+}
+.Desc_Container input{
+    padding: 1rem;
+    width: 80%;
+    margin-bottom: 10px;
+    border: none;
+    font-size: 15px;
+
+}
+.Desc_Container input:focus{
+    outline: none;
+    border-bottom: 1px solid black;
+
+}
+.remind{
+    display: flex;
+    align-items: center;
+}
+.form-addNewTask p{
+    margin-left: 20px;
+    padding-left: 10px;
+}
+.form-addNewTask .title{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+/* .pickday input{
+    padding-left:20px;
+} */
+
+.projects{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    max-height: 60px;
+    overflow-y: auto;
+}
+.project{
+    border: 1px solid blueviolet;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 17px;
+    margin: 7px;
+}
+.pr-pro{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    justify-content: space-evenly;
+
+}
+
+.active{
+    background-color: blueviolet;
+    color: white;
+}
+.button-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.button-container button{
+    width: 150px;
+    font-size: 18px;
+    border-radius: 7px;
+    border: none;   
+}
+.confirm{
+    background-color: blueviolet;
+    color: white;
+    border: none;
+}
+.confirm:hover{
+    transform: scale(1.1);
+}
+.cancel:hover{
+    transform:  scale(1.1);
+}
+
+/* Calender */
+
+ .calender{
+    padding: 1rem;
+    border-bottom: 1px solid #ebebeb;
+    margin-bottom: -30px;
+ }
+
+ .calender-header{
+    display: flex;
+    align-items: center;
+    margin-bottom: -45;
+ }
+ .calender-title{
+    display: flex;
+    align-items: center;
+    flex: 1;
+ }
+
+.calender p{
+    margin-left: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.btns span{
+    border-radius: 50%;
+    cursor: pointer;
+}
+.btns span:hover{
+    background-color: #ebebeb;
+    transition: ease-in-out;
+}
+.items{
+    padding: 11px;
+}
+.item{
+    padding: 5px;
+    margin: 4px;
+    font-size: 18px;
+    cursor: pointer;
+}
+/* Pojects */
+
+.project-container{
+    padding: 1rem;
+    border-bottom: 1px solid #ebebeb;
+    background-color:#d5def7;
+
+}
+.project-header{
+    display: flex;
+    align-items: center;
+}
+.project-title{
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+.project-title p {
+    margin-left: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.pr-btns span{
+    border-radius: 50%;
+    padding: 6px;
+    cursor: pointer;
+}
+.pr-btns span:hover{
+    background-color: #ebebeb;
+    transition: ease-in-out;
+}
+.pr-project{
+    font-size: 18px;
+
+}
+.project-body{
+    max-height: 400px;
+    overflow-y: auto;
+    scroll-behavior: hidden;
+}
+/* project */
+.edit_option-container{
+    display: flex;
+    flex-direction: row;
+}
+.tasks-counter{
+    flex: 1;
+    padding-left: 10px;
+}
+.edit_option{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    gap: 15px;
+    padding-right: 10px;
+}
+.tasks-counter button{
+    align-items: center;
+    border: none;
+    background-color: #DEE5F8;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+}
+.tasks-counter button:hover{
+    background-color: blueviolet;
+    color: white;
+}
+/* AddNewProject form, btn */
+
+.projectForm{
+    background-color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    position: relative;
+    padding-bottom: 15px;
+}
+.projectForm input{
+    width: 100%;
+    height: 40px;
+    margin: 15px 0 ;
+    border: none;
+    font-size: 18px;
+}
+.projectForm input:focus{
+    outline: none;
+    border-bottom: 1px solid black;
+}
+/* tasks */
+
+.tasks{
+    width: 450px;
+    height: 80%;
+    background-color: white;
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    border-radius: 5px;
+    opacity: 0.9;
+    padding: 0 15px 0 15px;
+    overflow-y: auto;
+}
+.selected_tasks{
+    margin: 18px 0;
+    text-transform: capitalize;
+    font-size: 21px;
+    font-weight: bold;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #ebebeb;
+}
+.Tasks{
+    overflow-y: auto;
+}
+/* task, todo */
+.task{
+    overflow-y: auto;
+}
+.task_container{
+    display: flex;
+    align-items: center;
+}
+.task span{
+    cursor: pointer;
+
+}
+.task_text{
+    flex: 1;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.task_text span{
+    font-size: 18px;
+    color: #bebebe;
+}
+.task_text{
+    position: relative;
+}
+.task_desc {
+    margin: 0 10px 10px 10px;
+}
+.task_desc p{
+    text-align: start;
+    font-size: 15px;
+    
+}
+
+.line{
+    height: 1px;
+    background-color: #bebebe;
+    position: absolute;
+    top: 40%;
+    width: 0;
+    transition: width 250ms ease-in-out;
+}
+.task_edit_btns span{
+    padding: 8px;
+}
+
+.line-through{
+    width: 100%;
+}
+
+/* Edit-Task */
+
+.editTodo{
+    position: absolute;
+    bottom: 40px;
+    left: calc(40px + 450px + 50px);
+    background-color: white;
+    height: 80%;
+    width: 450px;
+    border-radius: 5px;
+    opacity: 0.9;
+}
+.form-addNewTask{
+    padding-left: 1rem;
+}
+
+.edit-header{
+    margin: 15px 10px 15px 10px;
+    font-weight: bold;
+    font-size: 21px;
+    border-bottom: 1px solid #bebebe;
+}
+
+
+@media (max-width: 757px){
+   .user h3{
+     font-size: 16px;
+   } 
+   .task-btn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 40px;
+    margin: -10px;
+   }
+   .addNew-btn{
+    font-size: 16px;
+    font-weight: 600;
+    width: 120px;      
+}
+.todoModalContainer{
+    position: absolute;
+    top: 23%;
+    left: 50%;
+}
+.todoModalContainer form{
+    padding: 1rem;
+    width: 280px;
+    border-radius: 8px;
+}
+.project{
+    border: 1px solid blueviolet;
+    display: flex;
+    border-radius: 5px;
+    font-size: 15px;
+    text-align: center;
+    padding: 7px;
+    margin: 7px;
+}
+.button-container div button{
+    width: 120px;
+    padding: 3px;
+    font-size: 15px;
+    border-radius: 7px;
+    border: none;   
+}
+.project-container{
+    padding: 1rem;
+    border-bottom: 1px solid #ebebeb;
+
+}
+.project-title{
+    display: flex;
+    align-items: center;
+}
+.pr-btns span{
+    border-radius: 50%;
+    padding: 6px;
+    cursor: pointer;
+}
+.pr-btns{
+    display: flex;
+    padding: 4px;
+}
+
+.tasks{
+    width: 220px;
+    height: 60%;
+    position: fixed;
+    top: 1px;
+    left: 45%;
+    padding: 1px;
+}
+.selected_tasks{
+    margin: 18px 0;
+    text-transform: capitalize;
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #ebebeb;
+}
+.editTodo{
+    position: fixed;
+    top: 60%;
+    left: 45%;
+    /* bottom: 40px; */
+    /* left: calc(40px + 450px + 50px); */
+    background-color: white;
+    height: 40%;
+    width: 230px;
+    border-radius: 5px;
+    opacity: 0.9;
+}
+.form-addNewTask{
+    padding-left: 1px;
+}
+.sm-textContainer{
+    padding: 1px;
+    width: 80%;
+    margin-bottom: -5px;
+    border: none;
+}
+
 }
